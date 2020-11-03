@@ -1,8 +1,19 @@
-<!DOCTYPE html>
+<?php
+include_once 'header.php';
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>salattusivuprojekti</title>
-    <link rel="stylesheet" href="css/style.css">
-    </head>
+?>
+
+    <main>
+        <section class="banner">
+            <h2>Maukkaat reseptit elämän joka tilanteeseen</h2>
+        </section>
+
+    </main>
+    <footer>
+    </footer>
+
+
+<?php
+
+include_once 'footer.php';
+?>

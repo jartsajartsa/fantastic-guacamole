@@ -1,0 +1,65 @@
+*{
+    text-decoration: none;
+    color: #111;
+    margin: 0;
+    padding: 0;    
+}
+
+body {
+    background-color: #f3f3f3;
+}
+
+header {
+    background-color: #fff;
+    width: 100%;
+    height: 100px;
+}
+
+header .header-brand {
+    font-family: Catamaran;
+    font-size: 24px;
+    font-weight: 900;
+    color: #111;
+    text-transform: uppercase;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px 0px;
+}
+
+header nav ul {
+    display: block;
+    margin: 0 auto;
+    width: fit-content;
+}
+
+header nav ul li {
+    display: inline-block;
+    float: left;
+    list-style: none;
+    padding: 0px 16px;
+}
+
+header nav ul li a {
+    font-family: Catamaran;
+    font-size: 16px;
+    color: #111;
+}
+
+.banner {
+    width: 100%;
+    height: calc(100vh - 100px);
+    background-image: url("../uploads/etusivutacot.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.banner h2 {
+    font-family: Catamaran;
+    font-size: 50px;
+    color: #111;
+    text-align: center;
+    color: #fff;
+    text-shadow: 2px 2px 8px #111;
+}
