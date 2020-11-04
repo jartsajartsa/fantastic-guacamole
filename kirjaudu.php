@@ -1,16 +1,17 @@
 <?php
     include_once 'header.php';
-
 ?>
 
+<main>
 <div class="signup-form">
     <h2>Kirjaudu sisään</h2>
-    <form action="includes/kirjaudu.inc.php" method="post">
-        <input type="text" name="email" placeholder="Email.." required>
-        <input type="password" name="passwd" placeholder="Salasana.." required>
-        <button type="submit" name="submit">Log in</button><br>
-        <a href="forgotpasswd.php">Unohtuiko salasana?</a>
-    </form>
+        <form action="includes/kirjaudu.inc.php" method="post">
+            <input type="text" name="email" placeholder="Käyttäjänimi tai email.." required>
+            <input type="password" name="pwd" placeholder="Salasana.." required>
+            <button type="submit" name="submit">Kirjaudu</button><br>
+            <a href="forgotpasswd.php">Unohtuiko salasana?</a>
+        </form>
+
     <?php
     if (isset($_GET["error"])) {
         if ($_GET["error"] == "emptyinput") {
@@ -26,9 +27,8 @@
 
     ?>
 </div>
-
+<main>
 
 <?php
     include_once 'footer.php';
-
 ?>

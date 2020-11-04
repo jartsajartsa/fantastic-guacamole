@@ -1,0 +1,205 @@
+*{
+    text-decoration: none;
+    color: #111;
+    margin: 0;
+    padding: 0;    
+}
+
+body {
+    background-color: #f3f3f3;
+}
+
+main {
+    padding-top: 100px;
+}
+
+/*header*/
+
+header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    background-color: #fff;
+    width: 100%;
+    height: 100px;
+}
+
+header .header-brand {
+    font-family: Catamaran;
+    font-size: 24px;
+    font-weight: 900;
+    color: #111;
+    text-transform: uppercase;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px 0px;
+    line-height: 20px;
+}
+
+header nav ul {
+    display: block;
+    margin: 0 auto;
+    width: fit-content;
+}
+
+header nav ul li {
+    display: inline-block;
+    float: left;
+    list-style: none;
+    padding: 0px 16px;
+}
+
+header nav ul li a {
+    font-family: Catamaran;
+    font-size: 16px;
+    color: #111;
+}
+
+@media only screen and (min-width: 1000px){
+    header .header-brand {     
+        margin: 31px 0;
+        text-align: left;
+        line-height: 38px;
+        padding: 0 20px 0 40px;
+        border-right: 3px solid #111;
+        float: left;
+    }
+
+    header nav ul {        
+        margin: 20px 0px 0px 20px;
+        float: left;
+    }    
+    
+    header nav ul li a {      
+        line-height: 60px;
+    }
+}
+
+/*index*/
+
+.banner {
+    width: 100%;
+    height: calc(100vh - 100px);
+    background-image: url("../uploads/etusivutacot.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: table;
+}
+
+.vertical-center {
+    display: table-cell;
+    vertical-align: middle;
+    
+}
+
+.banner h2 {
+    font-family: Catamaran;
+    font-size: 50px;
+    color: #111;
+    text-align: center;
+    color: #fff;
+    text-shadow: 2px 2px 8px #111;
+}
+
+@media only screen and (min-width: 1000px){
+    .wrapper {
+        width: 1000px;
+        margin: 0 auto;
+    }
+    
+    .banner {        
+        height: 600px;       
+    }
+}
+
+/* footer */
+
+footer {
+    width: calc(100% - 80px);
+    padding: 40px 40px;
+    background-color: #fff;
+    color: #111;
+    overflow: hidden;
+}
+
+footer ul {
+    width: fit-content;
+    float: left;
+    padding-left: 20px;
+}
+
+footer ul li {
+    display: block;
+    list-style: none;    
+}
+
+footer ul li a {
+    font-family: Catamaran;
+    font-size: 20px;
+    color: #111;
+    line-height: 30px;
+}
+
+/* form */
+
+.signup-form h2 {
+    font-family: Catamaran;
+    line-height: 60px;
+    color: #111;
+    
+}
+
+.signup-form {
+    display: inline-block;
+    margin-left: 30%;
+    margin-right: 30%;
+  }
+  
+  .signup-form input[type=text] {
+    padding:10px;
+    border:0;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+  }
+  
+  .signup-form input[type=password] {
+    padding:10px;
+    border:0;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+  }
+  
+  .rounded-input {
+    padding:10px;
+    border-radius:10px;
+  }
+  
+  input {
+    width:80%;
+  }
+  
+  input[type=text]:focus {
+    background-color: #c5c8d3;
+    border-color: #000;  
+  }
+  
+  input[type=password]:focus {
+    background-color: #c5c8d3;
+    border-color: #000;  
+  }
+  
+  button {  
+    
+    appearance:none;
+    -webkit-appearance:none;  
+    
+    padding:10px;
+    border:none;
+    background-color:#3F51B5;
+    color:#fff;
+    font-weight:600;
+    border-radius:5px;
+    width:80%;
+  
+  }
