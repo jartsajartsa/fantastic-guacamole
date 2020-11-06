@@ -6,10 +6,10 @@
 <div class="signup-form">
     <h2>Kirjaudu sisään</h2>
         <form action="includes/kirjaudu.inc.php" method="post">
-            <input type="text" name="email" placeholder="Käyttäjänimi tai email.." required>
+            <input type="text" name="kayttajanimi" placeholder="Käyttäjänimi tai email.." required>
             <input type="password" name="pwd" placeholder="Salasana.." required>
             <button type="submit" name="submit">Kirjaudu</button><br>
-            <a href="forgotpasswd.php">Unohtuiko salasana?</a>
+            <a href="forgotpwd.php">Unohtuiko salasana?</a>
         </form>
 
     <?php

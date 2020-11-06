@@ -2,7 +2,7 @@
 
 function emptyInputSignup($etunimi, $sukunimi, $kayttajanimi, $email, $pwd, $pwdRepeat) {
     $result;
-    if (empty($etunimi) || empty($kayttajanimi) || empty($sukunimi) || empty($email) || empty($pwd) || empty($pwdRepeat)) {
+    if (empty($etunimi) || empty($sukunimi) || empty($kayttajanimi) || empty($email) || empty($pwd) || empty($pwdRepeat)) {
         $result = true;
     }
     else {
@@ -48,7 +48,7 @@ function emailExists($link, $kayttajanimi, $email) {
     $sql = "SELECT * FROM users WHERE kayttajanimi = ? OR email = ?;";
     $stmt = mysqli_stmt_init($link);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-        header("location: ../signup.php?error=stmtfailed");
+        header("location: ../rekisteroidy.php?error=stmtfailed");
         exit();
     }
 
@@ -74,23 +74,23 @@ function createUser($link, $etunimi, $sukunimi, $kayttajanimi, $email, $pwd) {
     $sql = "INSERT INTO users (etunimi, sukunimi, kayttajanimi, email, salasana) VALUES (?,?,?,?,?);";
     $stmt = mysqli_stmt_init($link);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-        header("location: ../signup.php?error=stmtfailed");
+        header("location: ../rekisteroidy.php?error=stmtfailed");
         exit();
     }
 
     $hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
 
-    mysqli_stmt_bind_param($stmt, "sssss", $etunimi, $sukunimi, $kayttajanimi, $email, $pwd);
+    mysqli_stmt_bind_param($stmt, "sssss", $etunimi, $sukunimi, $kayttajanimi, $email, $hashedPwd);
     mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
-    header("location: ../signup.php?error=none");
-    exit();    
+    header("location: ../rekisteroidy.php?error=none");
+    exit();
 
 }
 
-function emptyInputLogin($email,$pwd) {
+function emptyInputLogin($kayttajanimi,$pwd) {
     $result;
-    if (empty($email) || empty($pwd)) {
+    if (empty($kayttajanimi) || empty($pwd)) {
         $result = true;
     }
     else {
@@ -99,25 +99,28 @@ function emptyInputLogin($email,$pwd) {
     return $result;
 }
 
-function loginUser($link, $email, $passwd) {
-    $emailExists = emailExists($link, $email);
+function loginUser($link, $kayttajanimi, $pwd) {
+    $emailExists = emailExists($link, $kayttajanimi, $kayttajanimi);
 
     if ($emailExists === false) {
-        header("location: ../login.php?error=wronglogin");
+        header("location: ../kirjaudu.php?error=wronglogin");
         exit();
     }
 
-    $passwdHashed = $emailExists["pwd"];
-    $checkPasswd = password_verify($passwd, $passwdHashed);
+    $pwdHashed = $emailExists["salasana"];
+    $checkPwd = password_verify($pwd, $pwdHashed);
 
-    if ($checkPasswd === false) {
-        header("location: ../login.php?error=wronglogin");
+    if ($checkPwd === false) {
+        header("location: ../kirjaudu.php?error=wronglogin");
         exit();
     }
-    else if ($checkPasswd === true) {
+    else if ($checkPwd === true) {
         session_start();
         $_SESSION["etunimi"] = $emailExists["etunimi"];
+        $_SESSION["sukunimi"] = $emailExists["sukunimi"];
         $_SESSION["kayttajanimi"] = $emailExists["kayttajanimi"];
+        $_SESSION["email"] = $emailExists["email"];
+        
         header("location: ../index.php");
         exit();
     }
@@ -159,7 +162,7 @@ function emptyInputReset($email) {
 }
 
 function resetPwd($link, $email) {
-    $emailExists = emailExists($link, $email);
+    $emailExists = emailExists($link, $email, $email);
     if ($emailExists === false) {
         header("location: ../forgotpasswd.php?error=wrongemail");
         exit();

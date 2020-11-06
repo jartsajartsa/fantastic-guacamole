@@ -12,28 +12,28 @@
         require_once 'dbh.inc.php';
         require_once 'functions.inc.php';
 
-        if (emptyInputSignup($etunimi, $sukunimi, $kayttajanimi, $email, $passwd, $passwdRepeat) !== false) {
-            header("location: ../signup.php?error=emptyinput");
+        if (emptyInputSignup($etunimi, $sukunimi, $kayttajanimi, $email, $pwd, $pwdRepeat) !== false) {
+            header("location: ../rekisteroidy.php?error=emptyinput");
             exit();
         }
 
         if (invalidKayttajanimi($kayttajanimi) !== false) {
-            header("location: ../signup.php?error=emptyinput");
+            header("location: ../rekisteroidy.php?error=invalidusername");
             exit();
         }
     
         if (invalidEmail($email) !== false){
-            header("location: ../signup.php?error=invalidemail");
+            header("location: ../rekisteroidy.php?error=invalidemail");
             exit();
         }
     
         if (pwdMatch($pwd, $pwdRepeat) !== false){
-            header("location: ../signup.php?error=passwordsdontmatch");
+            header("location: ../rekisteroidy.php?error=passwordsdontmatch");
             exit();
         }
     
         if (emailExists($link, $kayttajanimi, $email) !== false){
-            header("location: ../signup.php?error=emailkaytossa");
+            header("location: ../rekisteroidy.php?error=email/usernametaken");
             exit();
         }
         

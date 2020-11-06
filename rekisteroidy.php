@@ -20,12 +20,16 @@
             echo "<p>Täytä kaikki kentät</p>";
         }
 
+        if ($_GET["error"] == "invalidusername") {
+            echo "<p>Käyttäjänimi ei sallittu</p>";
+        }
+
         else if ($_GET["error"] == "invalidemail") {
             echo "<p>Virhe email osoitteessa</p>";
         } 
 
-        else if ($_GET["error"] == "emailtaken") {
-            echo "<p>Email jo käytössä</p>";
+        else if ($_GET["error"] == "email/usernametaken") {
+            echo "<p>Email tai käyttäjänimi jo käytössä</p>";
         } 
 
         else if ($_GET["error"] == "passwordsdontmatch") {
