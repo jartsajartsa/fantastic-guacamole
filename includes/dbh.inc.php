@@ -1,15 +1,13 @@
 <?php
 
-$password;
-$user;
-$server;
+
 $dBName = "limeanteri";
 
-if (file_exists('../../../tunnukset.php')) include('../../../tunnukset.php');
+include('../../tunnukset.php');
 
 $local = in_array($_SERVER['REMOTE_ADDR'],array('127.0.0.1','REMOTE_ADDR' => '::1'));
 
-if (!$local) {	
+if (!$local) {
   $password = $db_pwd_azure;
   $user = $db_username_azure;
   $server = "localhost:49492";

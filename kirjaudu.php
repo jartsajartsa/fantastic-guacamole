@@ -2,13 +2,13 @@
     include_once 'header.php';
 ?>
 
-<main>
+
 <div class="signup-form">
     <h2>Kirjaudu sisään</h2>
-        <form action="includes/kirjaudu.inc.php" method="post">
-            <input type="text" name="kayttajanimi" placeholder="Käyttäjänimi tai email.." required>
+        <form action="formhandle.php" method="post">
+            <input type="text" name="kayttajanimi" placeholder="Käyttäjänimi tai e-mail.." required>
             <input type="password" name="pwd" placeholder="Salasana.." required>
-            <button type="submit" name="submit">Kirjaudu</button><br>
+            <button type="submit" name="submitkirjaudu">Kirjaudu</button><br>
             <a href="forgotpwd.php">Unohtuiko salasana?</a>
         </form>
 
@@ -27,7 +27,7 @@
 
     ?>
 </div>
-<main>
+
 
 <?php
     include_once 'footer.php';

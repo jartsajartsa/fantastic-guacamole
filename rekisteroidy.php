@@ -2,17 +2,17 @@
     include_once 'header.php';
 ?>
 
-<main>
+
 <div class="signup-form">
     <h2>Rekisteröityminen</h2>
-        <form action="includes/rekisteroidy.inc.php" method="post">
+        <form action="formhandle.php" method="post">
             <input type="text" name="etunimi" placeholder="Etunimi..." required>
             <input type="text" name="sukunimi" placeholder="Sukunimi..." required>
-            <input type="text" name="kayttajanimi" placeholder="Käyttäjänimi.." required>
-            <input type="text" name="email" placeholder="Email.." required>            
-            <input type="password" name="pwd" placeholder="Salasana.." required>
-            <input type="password" name="pwdrepeat" placeholder="Salasana uudelleen.." required>
-            <button type="submit" name="submit">Rekisteröidy</button>
+            <input type="text" name="kayttajanimi" pattern="[a-zA-Z0-9]{3,}" placeholder="Käyttäjänimi.." required>
+            <input type="text" name="email" placeholder="E-mail.." required>            
+            <input type="password" name="pwd" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" placeholder="Salasana.." required>
+            <input type="password" name="pwdrepeat" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" placeholder="Salasana uudelleen.." required>
+            <button type="submit" name="submitrekisteroidy">Rekisteröidy</button><br>
         </form>
     <?php
     if (isset($_GET["error"])) {
@@ -46,7 +46,6 @@
     }
 ?>
 </div>
-</main>
 
 <?php
     include_once 'footer.php';

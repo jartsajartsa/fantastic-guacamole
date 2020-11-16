@@ -2,12 +2,12 @@
     include_once 'header.php';
 ?>
 
-<main>
+
 <div class="signup-form">
     <h2>Unohtunut salasana</h2>
-    <form action="includes/resetpwd.inc.php" method="post">
-    <input type="text" name="email" placeholder="Email..">
-    <button type="submit" name="submit">Lähetä</button><br>
+    <form action="formhandle.php" method="post">
+    <input type="text" name="email" placeholder="E-mail..">
+    <button type="submit" name="submitresetpwd">Lähetä</button><br>
     <a href="kirjaudu.php">Takaisin</a>
 </form>
 <?php
@@ -19,9 +19,9 @@
 
  ?>
 
-    </div>
+</div>
 
-</main>
+
 <?php
     include_once 'footer.php';
 
