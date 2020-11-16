@@ -207,6 +207,7 @@ footer {
     position: fixed;
     bottom: 0;
     width: calc(100% - 80px);
+    height: 80px;
     padding: 40px 40px;
     background-color: limegreen;    
     overflow: hidden;
@@ -394,6 +395,23 @@ input[type=textainesosa] {
     font-family: Catamaran;
     line-height: 40px;
     color: #111;
+
+}
+.galleria {
+  margin: 5px;
+  border: 1px solid #ccc;
+  float: left;
+  width: 180px;
+}
+
+.galleria img {
+    width: 100%;
+    height: auto;
+}
+
+.desc {
+    padding: 15px;
+    text-align: center;
 }
 
 .uusimmat a{

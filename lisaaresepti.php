@@ -20,7 +20,7 @@
     ?>
     </select><br>
         <br><label>Lataa kuva</label>
-        <input type="file" name="kuva" id="kuva"><br>
+        <input type="file" name="fileToUpload" id="fileToUpload"><br>
     <div id="ainekset">
     <div id="TextBoxDiv1">
         <label>Määrä #1 : </label><input type='textbox' name="maara" id='maara1' placeholder="5" required>        
