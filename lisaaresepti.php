@@ -6,7 +6,7 @@
 ?>
 
 <script>
-    window.data = <?php echo json_encode(yksikotjs($link), JSON_HEX_TAG); ?>;    
+    var options = <?php echo json_encode(yksikotjs($link), JSON_HEX_TAG); ?>;
 </script>
 
 <div class="lisaaresepti">
@@ -23,13 +23,13 @@
         <input type="file" name="fileToUpload" id="fileToUpload"><br>
     <div id="ainekset">
     <div id="TextBoxDiv1">
-        <label>Määrä #1 : </label><input type='textbox' name="maara" id='maara1' placeholder="5" required>        
-        <select name="yksikko" id="yksikko1" required>
+        <label>Määrä #1 : </label><input type='textbox' name="ainekset[aines1][maara]" id='maara1' placeholder="5" required>        
+        <select name="ainekset[aines1][yksikko]" id="yksikko1" required>
     <?php
         yksikot($link);
     ?>
     </select>
-        <label>Ainesosa #1 : </label><input type='textainesosa' name="ainesosa" id='ainesosa1' placeholder="vettä" required>
+        <label>Ainesosa #1 : </label><input type='textainesosa' name="ainekset[aines1][ainesosa]" id='ainesosa1' placeholder="vettä" required>
     </div>
 </div>
     <input type='button' value='Lisää Rivi' id='addButton'>

@@ -31,7 +31,7 @@ $(document).ready(function(){
   label.appendChild(document.createTextNode('Määrä #' + counter));
   textbox = document.createElement('input');
   textbox.type = 'textbox';
-  textbox.name = 'maara';
+  textbox.name = 'ainekset[aines' + counter + '][maara]';
   textbox.id = "maara" + counter;
   document.getElementById('TextBoxDiv' + counter).appendChild(label);
   newTextBoxDiv.appendChild(textbox);
@@ -39,22 +39,16 @@ $(document).ready(function(){
 
   var selectList= document.createElement('select');
   selectList.id = 'yksikko' + counter;
-  selectList.name = 'yksikko';
+  selectList.name = 'ainekset[aines' + counter + '][yksikko]';
   document.getElementById('TextBoxDiv' + counter).appendChild(selectList);
   
-  var raw = window.data;
-  var clean = [];
-  for (var i = 0, len = raw.length; i < len; i++) {
-      clean.push(raw[i].nimi);
-  }
-
-  for (var i = 0; i<clean.length; i++){
+ 
+  for (var i = 0; i<options.length; i++){
     var option = document.createElement('option');
     option.value = i;
-    option.text = clean[i];
+    option.text = options[i];
     selectList.appendChild(option);
   }
-
 
   var label, textbox;
 
@@ -62,7 +56,7 @@ $(document).ready(function(){
   label.appendChild(document.createTextNode('Ainesosa #' + counter));
   textbox = document.createElement('input');
   textbox.type = 'textainesosa';
-  textbox.name = 'ainesosa';
+  textbox.name = 'ainekset[aines' + counter + '][ainesosa]';
   textbox.id = "ainesosa" + counter;
   document.getElementById('TextBoxDiv' + counter).appendChild(label); 
   newTextBoxDiv.appendChild(textbox);

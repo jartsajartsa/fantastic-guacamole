@@ -227,8 +227,8 @@ function etsiResepti($link, $search, $search1) {
 
     $sql = "SELECT DISTINCT r.resepti_id, r.resepti_nimi, r.kuva FROM resepti r
         INNER JOIN ainesosa a ON a.resepti_id = r.resepti_id
-        WHERE r.resepti_nimi LIKE ?
-        OR a.nimi LIKE ?;";
+        WHERE r.resepti_nimi LIKE CONCAT ('%', ?, '%')
+        OR a.nimi LIKE CONCAT ('%', ?, '%');";
 
     $stmt = mysqli_stmt_init($link);
 
@@ -315,22 +315,13 @@ function yksikotjs($link){
     $result = mysqli_query($link, $sql);
     
     if($result->num_rows >0) {
-        while ($row = mysqli_fetch_assoc($result)) {
-            $rows[] = $row;
+        while ($row = mysqli_fetch_assoc($result)) { //mysqli_fetch_row
+            $rows[] = $row['nimi'];
     
     }
     return $rows;
+    }
 }
-}
-
-// function kuva($kuva) {
-//     $target_dir = "uploads/";
-//     $target_file = $target_dir . $kuva;
-
-//     move_uploaded_file($kuva, $target_dir);
-
-//     return $target_file;
-// }
 
 
 function lisaaResepti($link, $reseptinimi, $kategoria, $user, $kuva, $ohje){
@@ -350,7 +341,7 @@ function lisaaResepti($link, $reseptinimi, $kategoria, $user, $kuva, $ohje){
 }
 
 
-function lisaaAinesosa($link, $last_id,$maara, $yksikko, $ainesosa) {
+function lisaaAinesosa($link, $last_id, $maara, $yksikko, $ainesosa) {
     $sql = "INSERT INTO ainesosa (nimi, resepti_id, maara, yksikko_id ) VALUES (?,?,?,?);";
 
     $stmt = mysqli_stmt_init($link);
@@ -360,16 +351,16 @@ function lisaaAinesosa($link, $last_id,$maara, $yksikko, $ainesosa) {
     }
 
     mysqli_stmt_bind_param($stmt, "siii", $ainesosa, $last_id, $maara, $yksikko);
-    mysqli_stmt_execute($stmt);    
+    mysqli_stmt_execute($stmt);
     mysqli_stmt_close($stmt);
 }
 
 
 
-function naytaResepti($link, $id) {    
+function naytaResepti($link, $id) {
 
     $sql = "SELECT r.resepti_id, u.kayttajanimi, r.resepti_nimi, k.kategoria_nimi, r.ohje
-        FROM resepti r            
+        FROM resepti r
         INNER JOIN kategoria k ON k.id = r.kategoria_id
         INNER JOIN users u ON u.id = r.users_id
         WHERE r.resepti_id = ?;";
@@ -384,8 +375,8 @@ function naytaResepti($link, $id) {
         mysqli_stmt_bind_param($stmt, "i", $id);
         mysqli_stmt_execute($stmt);
 
-
         $result = mysqli_stmt_get_result($stmt);
+        mysqli_stmt_close($stmt);
 
     
     $sql2 = "SELECT r.resepti_id, a.nimi, a.maara, y.nimi FROM ainesosa a
@@ -401,7 +392,8 @@ function naytaResepti($link, $id) {
         mysqli_stmt_bind_param($stmt2, "i", $id);
         mysqli_stmt_execute($stmt2);
 
-        $result2 = mysqli_stmt_get_result($stmt2);       
+        $result2 = mysqli_stmt_get_result($stmt2);
+        mysqli_stmt_close($stmt2);
     
         if($result->num_rows >0) {
             while ($row = mysqli_fetch_array($result)) {
@@ -415,7 +407,24 @@ function naytaResepti($link, $id) {
             while ($row2 = mysqli_fetch_array($result2)) {
                 echo "<div class='reseptiainesosat'> $row2[1]"." $row2[2]"." $row2[3]</div>";
             }
-        }    
-      
+        }
+}
 
+
+function lisaaAinekset($link, $last_id, $ainekset) {
+    $sql = "INSERT INTO ainesosa (nimi, resepti_id, maara, yksikko_id ) VALUES (?,?,?,?);";
+
+    $stmt = mysqli_stmt_init($link);
+
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("location: resepti.php?error=1");
+        exit();
+    }
+    
+    foreach ($ainekset as $aines) {
+        mysqli_stmt_bind_param($stmt, "siii", $aines['ainesosa'], $last_id, $aines['maara'], $aines['yksikko']);
+        $stmt->execute();
+    }
+    
+    
 }
