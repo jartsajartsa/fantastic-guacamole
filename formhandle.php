@@ -2,7 +2,7 @@
 include_once 'header.php';
 require_once 'includes/dbh.inc.php';
 require_once 'includes/functions.inc.php';
-require_once 'includes/mailer.inc.php';
+// require_once 'includes/mailer.inc.php';
 
 if (isset($_POST["submitkirjaudu"])) {
       
