@@ -61,41 +61,41 @@ if (isset($_POST["submitrekisteroidy"])) {
 
 }
 
-if (isset($_POST["submitchangepwd"])) {
+// if (isset($_POST["submitchangepwd"])) {
 
-    $email = $_SESSION["email"];
-    $oldPwd = $_POST["oldPwd"];
-    $pwd = $_POST["pwd"];
-    $pwdRepeat = $_POST["pwdrepeat"];
+//     $email = $_SESSION["email"];
+//     $oldPwd = $_POST["oldPwd"];
+//     $pwd = $_POST["pwd"];
+//     $pwdRepeat = $_POST["pwdrepeat"];
 
-    if (emptyInputLogin($oldPwd,$pwd,$pwdRepeat) !== false) {
-        header("location: profiili.php?error=emptyinput");
-        exit();
-    }
+//     if (emptyInputLogin($oldPwd,$pwd,$pwdRepeat) !== false) {
+//         header("location: profiili.php?error=emptyinput");
+//         exit();
+//     }
 
-    if (pwdMatch($pwd, $pwdRepeat) !== false){
-        header("location: profiili.php?error=passwordsdontmatch");
-        exit();
+//     if (pwdMatch($pwd, $pwdRepeat) !== false){
+//         header("location: profiili.php?error=passwordsdontmatch");
+//         exit();
 
-    }
+//     }
 
-    changePwd ($link, $email, $oldPwd, $pwd);
-    header("location: profiili.php?error=success");
+//     changePwd ($link, $email, $oldPwd, $pwd);
+//     header("location: profiili.php?error=success");
 
-}
+// }
 
-if (isset($_POST["submitresetpwd"])) {
+// if (isset($_POST["submitresetpwd"])) {
 
-    $email = $_POST["email"];
+//     $email = $_POST["email"];
 
-    if (emptyInputReset($email) !== false) {
-        header("location: forgotpwd.php?error=emptyinput");
-        exit();
-    }    
+//     if (emptyInputReset($email) !== false) {
+//         header("location: forgotpwd.php?error=emptyinput");
+//         exit();
+//     }    
     
-    posti($email, resetPwd ($link, $email), "Salasanan resetointi onnistui");
-    header("location: kirjaudu.php?error=success");
-}
+//     posti($email, resetPwd ($link, $email), "Salasanan resetointi onnistui");
+//     header("location: kirjaudu.php?error=success");
+// }
 
 
 if (isset($_POST["submitlisaa"])) {
