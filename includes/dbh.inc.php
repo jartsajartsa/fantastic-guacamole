@@ -1,6 +1,5 @@
 <?php
 
-
 $dBName = "limeanteri";
 
 include('../../tunnukset.php');
@@ -26,3 +25,6 @@ if(!$link) {
         die("Connection failed: " . mysqli_connect_error());       
     }
 }
+
+$link->close();
+?>

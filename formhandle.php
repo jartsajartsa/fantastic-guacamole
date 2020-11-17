@@ -144,12 +144,10 @@ if (isset($_POST["submitlisaa"])) {
     $kategoria = $_POST["kategoria"];    
     $user = $_SESSION["id"];
     $ohje = $_POST["ohje"];    
-    $ainekset = $_POST["ainekset"];    
-
-    // print_r($ainekset);
-    $last_id = lisaaResepti($link, $reseptinimi, $kategoria, $user, $target_file, $ohje);
+    $ainekset = $_POST["ainekset"];
     
-    // lisaaAinesosa($link, $last_id, $maara, $yksikko, $ainesosa);
+    $last_id = lisaaResepti($link, $reseptinimi, $kategoria, $user, $target_file, $ohje);
+   
     lisaaAinekset($link, $last_id, $ainekset);
         
     header("location: lisaaresepti.php?success=1");
