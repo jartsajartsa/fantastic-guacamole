@@ -4,19 +4,13 @@ require_once 'includes/functions.inc.php';
 ?>
        
        
-        <section class="banner">
-            <h2>Maukkaat reseptit elämän joka tilanteeseen</h2>
+    <section class="banner">
+        <h2>Maukkaat reseptit elämän joka tilanteeseen</h2>
+        
+    </section>
             
-        </section>
-                
-        <h2>Uusimmat reseptit: </h2>
-        
-        <?php
-            haeUusimmat($link);
-            ?>
-        
-        
+    <h2>Uusimmat reseptit: </h2>
     
-
-    
-    
+<?php
+    haeUusimmat($link);
+?>

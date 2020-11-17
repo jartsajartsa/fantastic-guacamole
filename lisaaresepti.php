@@ -1,8 +1,8 @@
 <?php
     include_once 'header.php';
-    include_once 'formhandle.php';
-    include_once 'includes/functions.inc.php';
-    include_once 'includes/dbh.inc.php';
+    require_once 'formhandle.php';
+    require_once 'includes/functions.inc.php';
+    require_once 'includes/dbh.inc.php';
 ?>
 
 <script>

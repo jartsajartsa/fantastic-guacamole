@@ -215,6 +215,7 @@ function haeUusimmat($link, $raja = 6) {
 
     
     $result = mysqli_stmt_get_result($stmt);
+    mysqli_stmt_close($stmt);
 
     if($result->num_rows >0) {
         while ($row = mysqli_fetch_array($result)) {
@@ -356,7 +357,6 @@ function lisaaAinesosa($link, $last_id, $maara, $yksikko, $ainesosa) {
 }
 
 
-
 function naytaResepti($link, $id) {
 
     $sql = "SELECT r.resepti_id, u.kayttajanimi, r.resepti_nimi, k.kategoria_nimi, r.ohje
@@ -425,6 +425,5 @@ function lisaaAinekset($link, $last_id, $ainekset) {
         mysqli_stmt_bind_param($stmt, "siii", $aines['ainesosa'], $last_id, $aines['maara'], $aines['yksikko']);
         $stmt->execute();
     }
-    
-    
+    mysqli_stmt_close($stmt);
 }
