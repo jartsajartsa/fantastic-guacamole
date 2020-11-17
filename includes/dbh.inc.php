@@ -26,5 +26,4 @@ if(!$link) {
     }
 }
 
-$link->close();
 ?>
