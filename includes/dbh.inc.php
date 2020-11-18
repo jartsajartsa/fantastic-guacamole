@@ -26,6 +26,10 @@ else {
   $server = "localhost";	
   }
 
+  echo($password);
+  echo($user);
+  echo($server);
+  echo($dBName);
 
 $link = mysqli_connect($server,$user,$password,$dBName);
 
